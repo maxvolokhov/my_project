@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development configuration
+/.idea/
+/.venv/
+
+# Compiled source
+/dist/
+/build/
+
+# Distribution / packaging
+/.eggs/
+*.egg-info/
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+
+# Django project settings
+*.log
+local_settings.py
+
+# PyCharm
+.idea/

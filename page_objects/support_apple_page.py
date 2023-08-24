@@ -8,5 +8,5 @@ class SupportApplePage(BasePage):
 
     __text_validation = (By.XPATH, '//h2[@id="expresstransit"]')
 
-    def validate_text_presence(self):
+    def is_text_displayed(self):
         return self.is_displayed(self.__text_validation)

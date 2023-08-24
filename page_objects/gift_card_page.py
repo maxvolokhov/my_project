@@ -15,6 +15,11 @@ class GiftCardPage(BasePage):
     __text_to_hover = (By.XPATH, '//h2[text()="Want to add a personalized message?"]')
     __add_to_bag = (By.XPATH, '//button[@name="add-to-cart"]')
     __validate_locator = (By.XPATH, '//h1[text()="Your bag total is $100.00."]')
+    __expected_text = 'Your bag total is $100.00.'
+
+    @property
+    def expected_text_return(self):
+        return self.__expected_text
 
     def click_mail(self):
         self.click(self.__mail_locator)
@@ -64,5 +69,5 @@ class GiftCardPage(BasePage):
         self.click(self.__text_to_hover)
         return self
 
-    def make_validate(self):
-        return self.is_displayed(self.__validate_locator)
+    def is_item_got(self):
+        return self.get_text(self.__validate_locator)

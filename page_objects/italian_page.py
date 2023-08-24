@@ -7,6 +7,11 @@ class ItalianPage(BasePage):
         super().__init__(driver)
 
     __italian_word = (By.XPATH, "//span/span[contains(text(), 'Intrattenimento')]")
+    __italian_text = 'Intrattenimento'
 
-    def is_word_displayed(self):
-        return self.is_displayed(self.__italian_word)
+    @property
+    def italian_text_check(self):
+        return self.__italian_text
+
+    def italian_word_displayed(self):
+        return self.get_text(self.__italian_word)

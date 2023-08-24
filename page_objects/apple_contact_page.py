@@ -6,9 +6,11 @@ class AppleContactPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    __usa_contact = (By.XPATH, '''//div[@class="country"]/*[contains(text(), 'United States')]''')
-    __canada_contact = (By.XPATH, '''//div[@class="country"]/*[contains(text(), 'Canada')]''')
-    __mexico_contact = (By.XPATH, '''//div[@class="country"]/*[contains(text(), 'Mexico')]''')
+    countries_to_check = ['United States', 'Canada', 'Mexico']
 
-    def text_country(self):
-        return self.is_displayed(self.__usa_contact and self.__canada_contact and self.__mexico_contact)
+    def generate_country_locator(self, country_name):
+        return (By.XPATH, f'//div[@class="country"]/*[contains(text(), "{country_name}")]')
+
+    def is_country_displayed(self, country_name):
+        locator = self.generate_country_locator(country_name)
+        return self.is_displayed(locator)

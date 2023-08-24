@@ -18,5 +18,5 @@ class BusinessPage(BasePage):
         self.click(self.__pdf_locator)
         return self
 
-    def pdf_check(self):
+    def is_pdf_displayed(self):
         return self.is_displayed(self.__pdf_check)

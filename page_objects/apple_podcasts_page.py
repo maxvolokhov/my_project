@@ -1,6 +1,4 @@
 from selenium.webdriver.common.by import By
-
-
 from utilities.ui_utilities.base_page import BasePage
 
 
@@ -8,16 +6,22 @@ class ApplePodcastsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    __text = (By.XPATH, '//h2[contains(text(), "Millions of shows. ")]')
-
+    __apple_podcasts_text_locator = (By.XPATH, '//h2[contains(text(), "Millions of shows. ")]')
     __drop_down_locator = (By.XPATH, '//button[@id="accordion-item-8-button"]')
-
     __link_transition = (By.XPATH, '//a[@data-analytics-title="learn more about podcaster resources"]')
-
     __expected_url = 'https://podcasters.apple.com/'
+    __text_on_page = 'Millions of shows.\nMore ways to listen. Now we’re talking.'
 
-    def is_text_displayed(self):
-        return self.is_displayed(self.__text)
+    @property
+    def url_located(self):
+        return self.__expected_url
+
+    @property
+    def expected_text(self):
+        return self.__text_on_page
+
+    def text_presence_check(self):
+        return self.get_text(self.__apple_podcasts_text_locator)
 
     def drop_down_click(self):
         self.click(self.__drop_down_locator)
@@ -26,6 +30,3 @@ class ApplePodcastsPage(BasePage):
     def go_by_link(self):
         self.click(self.__link_transition)
         return self
-
-    def url_assert(self):
-        return self.__expected_url

@@ -13,5 +13,5 @@ class CheckoutPage(BasePage):
         self.switch_to_frame(self.__frame_locator)
         return self
 
-    def validate_presence(self):
+    def is_item_presence_displayed(self):
         return self.is_displayed(self.__apple_id_locator)

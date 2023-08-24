@@ -17,7 +17,6 @@ class BuyIphonePage(BasePage):
     __apple_coverage = (By.XPATH, '//label[@id = "applecareplus_59_noapplecare_label"]')
     __add_to_bag = (By.XPATH, '//button[@class="button button-block"]')
 
-
     def iphone_14_pro_exist(self):
         return self.is_displayed(self.__iphone_select)
 

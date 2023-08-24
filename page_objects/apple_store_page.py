@@ -21,7 +21,7 @@ class AppleStorePage(BasePage):
         self.send_keys(self.__search_line_locator, search_input, press_enter=press_enter)
         return self
 
-    def validate_search_result(self):
+    def is_search_result_displayed(self):
         return self.is_displayed(self.__search_result)
 
     def apple_gift_transition(self):

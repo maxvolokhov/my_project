@@ -23,5 +23,5 @@ class AirPods2Page(BasePage):
         self.click(self.__value_locator)
         return self
 
-    def price_validator(self):
+    def is_increased_price_displayed(self):
         return self.is_displayed(self.__value_validator)

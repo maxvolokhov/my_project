@@ -8,5 +8,5 @@ class ViennaPage(BasePage):
 
     __store_address = (By.XPATH, '//address[text()="Kärntner Straße 11"]')
 
-    def address_is_located(self):
+    def is_address_is_located(self):
         return self.is_displayed(self.__store_address)

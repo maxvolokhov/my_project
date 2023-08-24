@@ -9,7 +9,12 @@ class AppleWatchPage(BasePage):
     __size_locator = (By.XPATH, "//span[text() = '8']")
     __add_to_bag_locator = (By.XPATH, '//button[@id="add-to-cart"]')
     __add_item_to_bag = (By.XPATH, '//button[@data-autom="recommendations-addToBag-button"]')
-    __item_bag_quantity = (By.XPATH, '//a[@aria-label="Shopping Bag with item count : 2"]')
+    __item_bag_quantity = (By.XPATH, '//span[@class="globalnav-bag-badge-number" and text()="2"]')
+    __expected_item_quantity = '2'
+
+    @property
+    def expected_item_quantity_return(self):
+        return self.__expected_item_quantity
 
     def size_select(self):
         self.click(self.__size_locator)
@@ -23,5 +28,5 @@ class AppleWatchPage(BasePage):
         self.click(self.__add_item_to_bag)
         return self
 
-    def item_quantity_check(self):
-        return self.is_displayed(self.__item_bag_quantity)
+    def is_item_quantity_got(self):
+        return self.get_text(self.__item_bag_quantity)

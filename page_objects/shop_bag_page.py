@@ -9,9 +9,14 @@ class ShopBagPage(BasePage):
     __macbook_item_locator = (By.XPATH, '//a[text() = "15-inch MacBook Air with M2 chip - Midnight"]')
     __quantity_of_macbook_locator = (By.XPATH, '//option[@value="1"]')
     __remove_button_locator = (By.XPATH, '//button[@data-autom="bag-item-remove-button"]')
+    __expected_text = 'Remove'
 
-    def are_items_displayed(self):
+    @property
+    def expected_text_return(self):
+        return self.__expected_text
+
+    def is_item_parameters_displayed(self):
         return self.is_displayed(self.__macbook_item_locator) and self.is_displayed(self.__quantity_of_macbook_locator)
 
-    def remove_item_displayed(self):
-        return self.is_displayed(self.__remove_button_locator)
+    def is_remove_item_got(self):
+        return self.get_text(self.__remove_button_locator)

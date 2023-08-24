@@ -22,7 +22,7 @@ class RetailPage(BasePage):
         self.click(self.__drop_down_list)
         return self
 
-    def store_work_time(self):
+    def is_store_work_time_displayed(self):
         return self.is_displayed(self.__text_validate)
 
     def click_us_drop_down(self):

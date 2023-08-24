@@ -7,13 +7,9 @@ class SigninPage(BasePage):
         super().__init__(driver)
 
     __frame_locator = (By.CSS_SELECTOR, '#aid-auth-widget-iFrame')
-
     __apple_id_field = (By.XPATH, '//div/input[@type="text"]')
-
     __login_button = (By.XPATH, '//i[@class= "shared-icon icon_sign_in"]')
-
     __password_field = (By.CSS_SELECTOR, '#password_text_field')
-
     __text_after_login = (By.CSS_SELECTOR, '#errMsg')
 
     def frame(self):

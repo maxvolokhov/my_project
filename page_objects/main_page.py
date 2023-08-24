@@ -29,6 +29,11 @@ class MainPage(BasePage):
     __apple_podcasts_locator = (By.XPATH, '//a[@class="ac-gf-directory-column-section-link"][@href="/apple-podcasts/"]')
     __apple_business = (By.XPATH, '//a[@href="/business/"]')
     __apple_vision_locator = (By.XPATH, '//a[@aria-label="Vision"]')
+    __expected_text = 'Your Bag is empty.'
+
+    @property
+    def expected_text_return(self):
+        return self.__expected_text
 
     def entertainment_find_and_click(self):
         self.click(self.__entertainment_label)
@@ -56,14 +61,11 @@ class MainPage(BasePage):
     def set_search_input(self, input1):
         self.send_keys(self.__search_hover, input1)
 
-    def search_with_js_2(self, value):
-        self.send_keys(self.__search_hover, value)
-
     def click_bag_locator(self):
         self.click(self.__bag_locator)
 
-    def bag_empty_display(self):
-        return self.is_displayed(self.__empty_text_locator)
+    def is_bag_empty_got(self):
+        return self.get_text(self.__empty_text_locator)
 
     def store_click(self):
         self.click(self.__find_store)

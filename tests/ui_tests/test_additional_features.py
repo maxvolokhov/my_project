@@ -2,24 +2,24 @@ import pytest
 
 
 @pytest.mark.smoke
-def test_apple_news(create_driver_main_page):
-    apple_news_page = create_driver_main_page.go_apple_news()
+def test_apple_news(navigate_to_main_page):
+    apple_news_page = navigate_to_main_page.go_apple_news()
     apple_news_page.click_try_one_month()
     assert apple_news_page.expected_text_return in apple_news_page.is_ios_consists(), 'Transition has not been executed'
 
 
 @pytest.mark.regression
-def test_podcasts_transition(create_driver_main_page):
-    apple_podcasts_page = create_driver_main_page.podcasts_transition()
+def test_podcasts_transition(navigate_to_main_page):
+    apple_podcasts_page = navigate_to_main_page.podcasts_transition()
     apple_podcasts_page.drop_down_click().go_by_link()
-    assert apple_podcasts_page.url_located == create_driver_main_page._driver.current_url, '''Transition has not 
+    assert apple_podcasts_page.url_located == navigate_to_main_page._driver.current_url, '''Transition has not 
     been executed'''
 
 
 @pytest.mark.smoke
 @pytest.mark.regression
-def test_business_pdf(create_driver_main_page):
-    business_page = create_driver_main_page.business_transition()
+def test_business_pdf(navigate_to_main_page):
+    business_page = navigate_to_main_page.business_transition()
     business_page.enterprise_click().pdf_click()
     assert business_page.is_pdf_displayed(), 'PDF file has not been downloaded'
 
@@ -38,8 +38,8 @@ def test_apple_gift(apple_store_navigate, env):
 
 
 @pytest.mark.regression
-def test_apple_vision_notify(create_driver_main_page):
-    apple_vision_page = create_driver_main_page.apple_vision_transition()
+def test_apple_vision_notify(navigate_to_main_page):
+    apple_vision_page = navigate_to_main_page.apple_vision_transition()
     apple_vision_page.notify_me_click().make_input_field_active_click().set_email().submit_button_click()
     assert apple_vision_page.expected_text_return in apple_vision_page.is_notify_got(), '''Created mail occurred as 
     appropriate'''

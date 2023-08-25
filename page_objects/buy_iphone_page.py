@@ -25,7 +25,7 @@ class BuyIphonePage(BasePage):
         return self
 
     def color_select(self):
-        self.click_with_js(self.__iphone_color)
+        self.click(self.__iphone_color)
         return self
 
     def storage_select(self):

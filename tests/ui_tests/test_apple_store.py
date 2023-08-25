@@ -27,9 +27,9 @@ def test_apple_watch(apple_watch_page):
 
 @pytest.mark.smoke
 @pytest.mark.regression
-def test_bag_status(create_driver_main_page):
-    create_driver_main_page.click_bag_locator()
-    assert create_driver_main_page.expected_text_return in create_driver_main_page.is_bag_empty_got(), '''There are 
+def test_bag_status(navigate_to_main_page):
+    navigate_to_main_page.click_bag_locator()
+    assert navigate_to_main_page.expected_text_return in navigate_to_main_page.is_bag_empty_got(), '''There are 
     some items in your bag'''
 
 

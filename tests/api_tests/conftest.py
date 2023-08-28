@@ -1,5 +1,8 @@
 import json
 import pytest
+
+from api_collections.booking_api import BookingApi
+from api_collections.data_classes.booking_data import Booking
 from utilities.config_obj import ConfigObject
 from page_objects.air_pods2 import AirPods2Page
 from page_objects.air_pods_case_page import AirPodsCasePage
@@ -52,3 +55,10 @@ apple_books_navigate = page_fixture(AppleBooksPage, "apple_books_url")
 retail_page_navigate = page_fixture(RetailPage, "retail_page_url")
 apple_store_navigate = page_fixture(AppleStorePage, "apple_store_url")
 apple_home_pod_navigate = page_fixture(HomePodPage, "apple_home_pod_url")
+
+
+@pytest.fixture()
+def create_mock_booking(env):
+    mock_data = BookingApi(env).get_booking_by_id(1)
+    booking = Booking(**mock_data.json())
+    return booking

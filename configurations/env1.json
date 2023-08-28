@@ -22,9 +22,6 @@
   "recipient_name": "Maksym",
   "recipient_email": "max.volokhov15@gmail.com",
   "sender_name": "Unknown",
-  "sender_email": "somemail94@gmail.com"
-
-
-
-
+  "sender_email": "somemail94@gmail.com",
+  "base_api": "https://restful-booker.herokuapp.com"
 }

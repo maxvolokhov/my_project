@@ -1,7 +1,7 @@
 from page_objects.order_page import OrderPage
 from utilities.ui_utilities.base_page import BasePage
 from selenium.webdriver.common.by import By
-
+import allure
 
 class BuyIphonePage(BasePage):
     def __init__(self, driver):
@@ -17,32 +17,41 @@ class BuyIphonePage(BasePage):
     __apple_coverage = (By.XPATH, '//label[@id = "applecareplus_59_noapplecare_label"]')
     __add_to_bag = (By.XPATH, '//button[@class="button button-block"]')
 
+    @allure.step
     def iphone_14_pro_exist(self):
         return self.is_displayed(self.__iphone_select)
 
+    @allure.step
     def new_click(self):
         self.click(self.__new)
         return self
 
+    @allure.step
     def color_select(self):
         self.click(self.__iphone_color)
         return self
 
+    @allure.step
     def storage_select(self):
         self.click(self.__iphone_storage)
 
+    @allure.step
     def no_trade_in_select(self):
         self.click(self.__no_trade_in)
 
+    @allure.step
     def buy_iphone_option(self):
         self.click(self.__buy_iphone_option)
 
+    @allure.step
     def carrier_select(self):
         self.click(self.__carrier_locator)
 
+    @allure.step
     def coverage_select(self):
         self.click(self.__apple_coverage)
 
+    @allure.step
     def add_iphone_to_bag(self):
         self.click(self.__add_to_bag)
         return OrderPage(self._driver)

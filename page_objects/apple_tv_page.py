@@ -1,7 +1,7 @@
 from page_objects.bag_page import BagPage
 from utilities.ui_utilities.base_page import BasePage
 from selenium.webdriver.common.by import By
-
+import allure
 
 class AppleTvPage(BasePage):
     def __init__(self, driver):
@@ -11,13 +11,16 @@ class AppleTvPage(BasePage):
     __put_in_bag = (By.XPATH, '//button[@name="add-to-cart"]')
     __proceed_button = (By.XPATH, '//button[@value="proceed"]')
 
+    @allure.step
     def wifi_version_click(self):
         self.click(self.__wifi_version_locator)
         return self
 
+    @allure.step
     def put_item_in_bag(self):
         self.click(self.__put_in_bag)
 
+    @allure.step
     def click_on_proceed_button(self):
         self.click(self.__proceed_button)
         return BagPage(self._driver)

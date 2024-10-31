@@ -6,6 +6,7 @@ from page_objects.apple_wallet_page import AppleWalletPage
 from page_objects.business_page import BusinessPage
 from page_objects.retail_page import RetailPage
 from utilities.ui_utilities.base_page import BasePage
+import allure
 
 
 class MainPage(BasePage):
@@ -31,62 +32,79 @@ class MainPage(BasePage):
     __apple_vision_locator = (By.XPATH, '//a[@aria-label="Vision"]')
     __expected_text = 'Your Bag is empty.'
 
+    @allure.step
     @property
     def expected_text_return(self):
         return self.__expected_text
 
+    @allure.step
     def entertainment_find_and_click(self):
         self.click(self.__entertainment_label)
 
+    @allure.step
     def apple_store_find_and_click(self):
         self.click(self.__apple_store_label)
 
+    @allure.step
     def apple_contact(self):
         self.click(self.__apple_contact)
 
+    @allure.step
     def buy_iphone(self):
         self.click(self.__iphone_buy)
 
+    @allure.step
     def language_click(self):
         self.click(self.__language_locator)
 
+    @allure.step
     def search_button_click(self):
         self.click(self.__search_button)
         return self
 
+    @allure.step
     def search_line_click(self):
         self.click(self.__search_line)
         return self
 
+    @allure.step
     def set_search_input(self, input1):
         self.send_keys(self.__search_hover, input1)
 
+    @allure.step
     def click_bag_locator(self):
         self.click(self.__bag_locator)
 
+    @allure.step
     def is_bag_empty_got(self):
         return self.get_text(self.__empty_text_locator)
 
+    @allure.step
     def store_click(self):
         self.click(self.__find_store)
         return RetailPage(self._driver)
 
+    @allure.step
     def go_to_wallet(self):
         self.click(self.__wallet_locator)
         return AppleWalletPage(self._driver)
 
+    @allure.step
     def go_apple_news(self):
         self.click(self.__apple_news_locator)
         return AppleNewsPage(self._driver)
 
+    @allure.step
     def podcasts_transition(self):
         self.click(self.__apple_podcasts_locator)
         return ApplePodcastsPage(self._driver)
 
+    @allure.step
     def business_transition(self):
         self.click(self.__apple_business)
         return BusinessPage(self._driver)
 
+    @allure.step
     def apple_vision_transition(self):
         self.click(self.__apple_vision_locator)
         return AppleVisionPage(self._driver)

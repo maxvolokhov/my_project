@@ -1,5 +1,6 @@
 from utilities.ui_utilities.base_page import BasePage
 from selenium.webdriver.common.by import By
+import allure
 
 
 class OrderPage(BasePage):
@@ -8,5 +9,6 @@ class OrderPage(BasePage):
 
     __bag_counter_locator = (By.XPATH, '//a[@aria-label="Shopping Bag with item count : 1"]')
 
+    @allure.step
     def counter_checker(self):
         return self.is_displayed(self.__bag_counter_locator)

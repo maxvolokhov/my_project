@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from utilities.ui_utilities.base_page import BasePage
+import allure
 
 
 class SigninPage(BasePage):
@@ -12,20 +13,25 @@ class SigninPage(BasePage):
     __password_field = (By.CSS_SELECTOR, '#password_text_field')
     __text_after_login = (By.CSS_SELECTOR, '#errMsg')
 
+    @allure.step
     def frame(self):
         self.switch_to_frame(self.__frame_locator)
         return self
 
+    @allure.step
     def set_apple_id(self, apple_id_value):
         self.send_keys(self.__apple_id_field, apple_id_value)
         return self
 
+    @allure.step
     def login_click(self):
         self.click(self.__login_button)
 
+    @allure.step
     def set_password(self, password):
         self.send_keys(self.__password_field, password)
         return self
 
+    @allure.step
     def is_text_login_displayed(self):
         return self.is_displayed(self.__text_after_login)

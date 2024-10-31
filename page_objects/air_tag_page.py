@@ -1,7 +1,7 @@
 from page_objects.bag_page import BagPage
 from utilities.ui_utilities.base_page import BasePage
 from selenium.webdriver.common.by import By
-
+import allure
 
 class AirTagPage(BasePage):
     def __init__(self, driver):
@@ -11,14 +11,17 @@ class AirTagPage(BasePage):
     __add_to_bag_locator = (By.XPATH, '//span[@class="label" and text() = "Add to Bag"]')
     __review_bag_locator = (By.XPATH, '//button[@name="proceed"]')
 
+    @allure.step
     def skip_engraving(self):
         self.click(self.__skip_locator)
         return self
 
+    @allure.step
     def add_airtag_to_bag(self):
         self.click(self.__add_to_bag_locator)
         return self
 
+    @allure.step
     def review_bag_click(self):
         self.click(self.__review_bag_locator)
         return BagPage(self._driver)

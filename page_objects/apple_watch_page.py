@@ -1,5 +1,6 @@
 from utilities.ui_utilities.base_page import BasePage
 from selenium.webdriver.common.by import By
+import allure
 
 
 class AppleWatchPage(BasePage):
@@ -12,21 +13,26 @@ class AppleWatchPage(BasePage):
     __item_bag_quantity = (By.XPATH, '//span[@class="globalnav-bag-badge-number" and text()="2"]')
     __expected_item_quantity = '2'
 
+    @allure.step
     @property
     def expected_item_quantity_return(self):
         return self.__expected_item_quantity
 
+    @allure.step
     def size_select(self):
         self.click(self.__size_locator)
         return self
 
+    @allure.step
     def add_to_bag(self):
         self.click(self.__add_to_bag_locator)
         return self
 
+    @allure.step
     def add_item_to_bag(self):
         self.click(self.__add_item_to_bag)
         return self
 
+    @allure.step
     def is_item_quantity_got(self):
         return self.get_text(self.__item_bag_quantity)
